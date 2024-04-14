@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Component } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -19,22 +19,22 @@ export class SenhasService {
 
   constructor() { }
 
-  adicionarSenha(senha: any){
+  adicionarSenha(senha: any) {
     this.senhas.push(senha);
   }
 
-  somaGeral() { 
-    this.senhasGeral++; 
+  somaGeral() {
+    this.senhasGeral++;
     this.senhasTotal++;
   }
 
   somaPrior() {
-    this.senhasPrior++; 
+    this.senhasPrior++;
     this.senhasTotal++;
   }
 
   somaExame() {
-    this.senhasExame++; 
+    this.senhasExame++;
     this.senhasTotal++;
   }
 
@@ -70,6 +70,7 @@ export class SenhasService {
         (this.senhaArray[tipoSenha].length + 1).toString().padStart(2, '0');
       this.senhaArray[tipoSenha].push(novaSenha);
     }
+
     console.log(this.senhaArray);
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SenhasService } from '../services/senhas.service';
+import { PasswordService } from '../services/password.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,7 +9,9 @@ import { SenhasService } from '../services/senhas.service';
 })
 export class Tab1Page {
   // inputNovaSenha: string = '';
+  senha: any[];
 
-  constructor (public senhasService: SenhasService) {}
-
+  constructor (public senhasService: SenhasService, public passwordService: PasswordService) {
+    this.senha = this.passwordService.senhas;
+  }
 }

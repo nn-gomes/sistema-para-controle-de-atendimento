@@ -23,4 +23,15 @@
       <ion-button color="success" expand="block" (click)="senhasService.novaSenha('SE')">Senha Exame</ion-button>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>Últimas senhas chamadas:</ion-list-header>
+        <ion-item *ngFor="let senha of passwordService.senhas">
+          <ion-icon name="{{senha.icon}}" slot="start" color="{{senha.color}}"></ion-icon>
+          {{senha.senha}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
