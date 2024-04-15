@@ -1,5 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Senha } from './senha.interface';
+import { format } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,33 @@ import { Senha } from './senha.interface';
 export class SenhasService {
 
 // YYMMDD-{tipo de senha}{numero da senha}
+  public now: Date | string = new Date();
+  
 
-  public senhas: Senha[] = [];
+  public senhas: Senha[] = [{
+    icon: 'accessibility',
+    color: 'primary',
+    codigo: '240401-SP01',
+    tm_geracao: '2024-04-01 19:10:09',
+  },
+  {
+    icon: 'document',
+    color: 'medium',
+    codigo: '240401-SE01',
+    tm_geracao: '2024-04-01 19:20:09',
+  },
+  {
+    icon: 'accessibility',
+    color: 'primary',
+    codigo: '240401-SP02',
+    tm_geracao: '2024-04-01 19:30:09',
+  },
+  {
+    icon: 'bandage',
+    color: 'dark',
+    codigo: '240401-SG01',
+    tm_geracao: '2024-04-01 19:40:09',
+  }];
   public inputNovaSenha: string = '';
 public senhasGeral: number = 0;
   public senhasPrior: number = 0;
@@ -28,6 +54,10 @@ public senhasGeral: number = 0;
         contadorTipoSenha.toString().padStart(2, '0');
 
         return novaSenha;
+  }
+
+  formatarDataAtual(): string {
+    return format(this.now, 'yyyy-MM-dd HH:mm:ss');
   }
 
   adicionarSenha(senha: any) {
@@ -69,6 +99,7 @@ public senhasGeral: number = 0;
       icon: this.selecionaIcone(tipoSenha),
       color: this.selecionaCor(tipoSenha),
       codigo: senhaFormatada,
+      tm_geracao: this.formatarDataAtual(),
     };
 
     console.log(senha)

@@ -10,7 +10,9 @@ import { TimerService } from '../services/timer.service';
 export class Tab2Page {
 
   public seconds: any;
-  constructor(public timerService: TimerService) {
+  public botaoEstaDesabilitado: boolean = false;
+
+  constructor(public timerService: TimerService, public senhasService: SenhasService) {
     this.seconds = timerService.second;
   }
 
@@ -27,4 +29,14 @@ export class Tab2Page {
     this.timerService.returnData(this.seconds);
   }
 
+  atenderSenha() {
+    this.timerService.start();
+    this.botaoEstaDesabilitado = true;
+  }
+
+  encerrarSenha() {
+    this.timerService.pause();
+    this.timerService.reset();
+    this.botaoEstaDesabilitado = false;
+  }
 }

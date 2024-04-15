@@ -17,10 +17,10 @@
   Guichê e Senha:
  </ion-item>
  <ion-content>
-  <ion-button expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 20px;">
+  <ion-button (click)="atenderSenha()" [disabled]="botaoEstaDesabilitado" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 20px;">
     Atender Próximo
   </ion-button>
-  <ion-button [disabled]="true" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 200px;">
+  <ion-button (click)="encerrarSenha()" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 200px;">
     Encerrar Atendimento
   </ion-button>
 
@@ -35,8 +35,18 @@
         {{ timerService.returnData((timerService.millisecond)) }}
     </h2>
   </ion-col>
-  <app-explore-container name="Tab 2 page"></app-explore-container>
 
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>Últimas senhas chamadas:</ion-list-header>
+        <ion-item *ngFor="let senha of senhasService.senhas">
+          <ion-icon name="{{senha.icon}}" slot="start" color="{{senha.color}}"></ion-icon>
+          {{senha.codigo}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 

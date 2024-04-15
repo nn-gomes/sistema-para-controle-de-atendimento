@@ -23,7 +23,7 @@ export class TimerService {
 
     reset() {
     this.hour = 0;
-    this.minute = 5;
+    this.minute = 0;
     this.second = 0;
     this.millisecond = 0;
   }
