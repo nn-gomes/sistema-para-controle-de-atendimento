@@ -12,5 +12,16 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-button (click)="start()">Start</ion-button>
+  <ion-button (click)="pause()">Pause</ion-button>
+  <ion-button (click)="timerService.reset()">Reset</ion-button>
+
+  <ion-col size="12" class="ion-text-center">
+    <h2>{{ timerService.returnData(timerService.hour) }}:
+        {{ timerService.returnData(timerService.minute) }}:
+        {{ timerService.returnData(timerService.second) }}.
+        {{ timerService.returnData((timerService.millisecond)) }}
+    </h2>
+  </ion-col>
   <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TimerService } from '../services/timer.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,23 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  public seconds: any;
+  constructor(public timerService: TimerService) {
+    this.seconds = timerService.second;
+  }
+
+  start() {
+    this.timerService.start();
+    console.log('here')
+  }
+
+  pause() {
+    this.timerService.pause();
+  }
+
+  returnData() {
+    this.timerService.returnData(this.seconds);
+  }
+
 
 }
