@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SenhasService } from '../services/senhas.service';
+import { TimerService } from '../services/timer.service';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -7,6 +9,22 @@ import { SenhasService } from '../services/senhas.service';
 })
 export class Tab2Page {
 
-  constructor(public senhasService: SenhasService) {}
+  public seconds: any;
+  constructor(public timerService: TimerService) {
+    this.seconds = timerService.second;
+  }
+
+  start() {
+    this.timerService.start();
+    console.log('here')
+  }
+
+  pause() {
+    this.timerService.pause();
+  }
+
+  returnData() {
+    this.timerService.returnData(this.seconds);
+  }
 
 }
