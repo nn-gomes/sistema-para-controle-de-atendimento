@@ -4,4 +4,6 @@ export interface Senha {
   codigo: string,
   tm_geracao: string;
   tipoSenha:string;
+  prioridade: number;
+  tempoMedio: string;
 }

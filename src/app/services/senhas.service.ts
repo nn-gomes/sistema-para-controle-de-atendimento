@@ -9,56 +9,37 @@ import { format } from 'date-fns';
 
 export class SenhasService {
 
-// YYMMDD-{tipo de senha}{numero da senha}
+  // YYMMDD-{tipo de senha}{numero da senha}
   public now: Date | string = new Date();
-  
 
-  public senhas: Senha[] = [{
-    icon: 'accessibility',
-    color: 'primary',
-    codigo: '240401-SP01',
-    tm_geracao: '2024-04-01 19:10:09',
-    tipoSenha: 'SP'
-  },
-  {
-    icon: 'document',
-    color: 'medium',
-    codigo: '240401-SE01',
-    tm_geracao: '2024-04-01 19:20:09',
-    tipoSenha: 'SE'
-  },
-  {
-    icon: 'accessibility',
-    color: 'primary',
-    codigo: '240401-SP02',
-    tm_geracao: '2024-04-01 19:30:09',
-    tipoSenha: 'SP'
-  },
-  {
-    icon: 'bandage',
-    color: 'dark',
-    codigo: '240401-SG01',
-    tm_geracao: '2024-04-01 19:40:09',
-    tipoSenha: 'SG'
-  }];
+  public senhas: Senha[] = [];
 
   public inputNovaSenha: string = '';
-public senhasGeral: number = 0;
+  public senhasGeral: number = 0;
   public senhasPrior: number = 0;
   public senhasExame: number = 0;
   public senhasTotal: number = 0;
+  public senhasOrdenadas: Senha[] = [
+
+  ];
 
   constructor() { }
 
+  ordenarSenhas() {
+    this.senhasOrdenadas = this.senhas.sort((a, b) => {
+      return a.prioridade - b.prioridade;
+    })
+  }
+
   formatarSenha(tipoSenha: string, contadorTipoSenha: number): string {
     const novaSenha = new Date().getFullYear().toString().substring(2, 4) +
-        (new Date().getMonth() + 1).toString().padStart(2, '0') +
-        new Date().getDate().toString().padStart(2, '0') +
-        '-' +
-        tipoSenha + 
-        contadorTipoSenha.toString().padStart(2, '0');
+      (new Date().getMonth() + 1).toString().padStart(2, '0') +
+      new Date().getDate().toString().padStart(2, '0') +
+      '-' +
+      tipoSenha +
+      contadorTipoSenha.toString().padStart(2, '0');
 
-        return novaSenha;
+    return novaSenha;
   }
 
   formatarDataAtual(): string {
@@ -106,10 +87,36 @@ public senhasGeral: number = 0;
       codigo: senhaFormatada,
       tm_geracao: this.formatarDataAtual(),
       tipoSenha: tipoSenha,
+      prioridade: this.selecionaPrioridade(tipoSenha),
+      tempoMedio: this.selecionarTempoMedio(tipoSenha).toString()
     };
 
     console.log(senha)
     this.senhas.push(senha);
+  }
+
+  selecionarTempoMedio(tipoSenha: string): number {
+    switch (tipoSenha) {
+      case 'SG':
+        return Math.floor(Math.random() * 7) + 2;;
+      case 'SE':
+        return Math.random() < 0.95 ? 1 : 5;
+      case 'SP':
+        return Math.floor(Math.random() * 11) + 10;;
+    }
+    return 0;
+  }
+
+  selecionaPrioridade(tipoSenha: string): number {
+    switch (tipoSenha) {
+      case 'SG':
+        return 2;
+      case 'SE':
+        return 3;
+      case 'SP':
+        return 1;
+    }
+    return 0;
   }
 
   selecionaIcone(tipoSenha: string): string {
@@ -122,7 +129,7 @@ public senhasGeral: number = 0;
       case 'SP':
         return icone = 'accessibility';
     }
-   return icone;
+    return icone;
   }
 
   selecionaCor(tipoSenha: string): string {
@@ -136,7 +143,7 @@ public senhasGeral: number = 0;
       case 'SP':
         return icone = 'primary';
     }
-   return icone;
+    return icone;
   }
 
   selecionaCodigo(tipoSenha: string): string {
