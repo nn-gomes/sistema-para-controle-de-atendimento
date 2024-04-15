@@ -18,25 +18,30 @@ export class SenhasService {
     color: 'primary',
     codigo: '240401-SP01',
     tm_geracao: '2024-04-01 19:10:09',
+    tipoSenha: 'SP'
   },
   {
     icon: 'document',
     color: 'medium',
     codigo: '240401-SE01',
     tm_geracao: '2024-04-01 19:20:09',
+    tipoSenha: 'SE'
   },
   {
     icon: 'accessibility',
     color: 'primary',
     codigo: '240401-SP02',
     tm_geracao: '2024-04-01 19:30:09',
+    tipoSenha: 'SP'
   },
   {
     icon: 'bandage',
     color: 'dark',
     codigo: '240401-SG01',
     tm_geracao: '2024-04-01 19:40:09',
+    tipoSenha: 'SG'
   }];
+
   public inputNovaSenha: string = '';
 public senhasGeral: number = 0;
   public senhasPrior: number = 0;
@@ -100,6 +105,7 @@ public senhasGeral: number = 0;
       color: this.selecionaCor(tipoSenha),
       codigo: senhaFormatada,
       tm_geracao: this.formatarDataAtual(),
+      tipoSenha: tipoSenha,
     };
 
     console.log(senha)

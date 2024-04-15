@@ -1,6 +1,7 @@
 export interface Senha {
   icon: string,
-  color?: string,
-  codigo?: any,
-  tm_geracao?: string;
+  color: string,
+  codigo: string,
+  tm_geracao: string;
+  tipoSenha:string;
 }
