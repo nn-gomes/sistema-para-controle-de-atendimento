@@ -11,6 +11,10 @@ export class Tab1Page {
   // inputNovaSenha: string = '';
   senha: any[];
 
+  ionViewDidLeave() {          
+    this.senhasService.ordenarSenhas();  
+  }
+
   constructor (public senhasService: SenhasService, public passwordService: PasswordService) {
     this.senha = this.passwordService.senhas;
   }

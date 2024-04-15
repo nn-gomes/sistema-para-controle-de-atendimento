@@ -24,23 +24,11 @@
     Encerrar Atendimento
   </ion-button>
 
-  <ion-button (click)="start()">Start</ion-button>
-  <ion-button (click)="pause()">Pause</ion-button>
-  <ion-button (click)="timerService.reset()">Reset</ion-button>
-
-  <ion-col size="12" class="ion-text-center">
-    <h2>{{ timerService.returnData(timerService.hour) }}:
-        {{ timerService.returnData(timerService.minute) }}:
-        {{ timerService.returnData(timerService.second) }}.
-        {{ timerService.returnData((timerService.millisecond)) }}
-    </h2>
-  </ion-col>
-
   <ion-card>
     <ion-card-content>
       <ion-list>
         <ion-list-header>Últimas senhas chamadas:</ion-list-header>
-        <ion-item *ngFor="let senha of senhasService.senhas">
+        <ion-item *ngFor="let senha of senhasService.senhasOrdenadas">
           <ion-icon name="{{senha.icon}}" slot="start" color="{{senha.color}}"></ion-icon>
           {{senha.codigo}}
         </ion-item>
