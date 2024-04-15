@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SenhasService } from '../services/senhas.service';
 import { TimerService } from '../services/timer.service';
 
 @Component({
@@ -25,6 +26,5 @@ export class Tab2Page {
   returnData() {
     this.timerService.returnData(this.seconds);
   }
-
 
 }

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Sitema para Controle de Atendimentos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,21 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
+
+ <ion-item >
+  Guichê e Senha:
+ </ion-item>
+ <ion-content>
+  <ion-button expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 20px;">
+    Atender Próximo
+  </ion-button>
+  <ion-button [disabled]="true" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 200px;">
+    Encerrar Atendimento
+  </ion-button>
+
   <ion-button (click)="start()">Start</ion-button>
   <ion-button (click)="pause()">Pause</ion-button>
   <ion-button (click)="timerService.reset()">Reset</ion-button>
@@ -24,4 +36,11 @@
     </h2>
   </ion-col>
   <app-explore-container name="Tab 2 page"></app-explore-container>
+
 </ion-content>
+
+
+
+
+
+
