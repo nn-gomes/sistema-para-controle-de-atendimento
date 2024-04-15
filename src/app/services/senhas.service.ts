@@ -19,7 +19,9 @@ export class SenhasService {
   public senhasPrior: number = 0;
   public senhasExame: number = 0;
   public senhasTotal: number = 0;
-  public senhasOrdenadas: Senha[] = [];
+  public senhasOrdenadas: Senha[] = [
+
+  ];
 
   constructor() { }
 
@@ -85,11 +87,24 @@ export class SenhasService {
       codigo: senhaFormatada,
       tm_geracao: this.formatarDataAtual(),
       tipoSenha: tipoSenha,
-      prioridade: this.selecionaPrioridade(tipoSenha)
+      prioridade: this.selecionaPrioridade(tipoSenha),
+      tempoMedio: this.selecionarTempoMedio(tipoSenha).toString()
     };
 
     console.log(senha)
     this.senhas.push(senha);
+  }
+
+  selecionarTempoMedio(tipoSenha: string): number {
+    switch (tipoSenha) {
+      case 'SG':
+        return Math.floor(Math.random() * 7) + 2;;
+      case 'SE':
+        return Math.random() < 0.95 ? 1 : 5;
+      case 'SP':
+        return Math.floor(Math.random() * 11) + 10;;
+    }
+    return 0;
   }
 
   selecionaPrioridade(tipoSenha: string): number {

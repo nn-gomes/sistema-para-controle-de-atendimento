@@ -14,7 +14,11 @@
   </ion-header>
 
  <ion-item >
-  Guichê e Senha:
+  Guichê e Senha:  <ion-item>
+    <ion-icon name="{{senhaEmAtendimento?.icon }}" slot="start" color="{{senhaEmAtendimento?.color}}"></ion-icon>
+    {{senhaEmAtendimento?.codigo}}
+  </ion-item>
+  Tempo Médio de Atendimento: {{ senhaEmAtendimento?.tempoMedio || 0 }} minuto(s).
  </ion-item>
  <ion-content>
   <ion-button (click)="atenderSenha()" [disabled]="botaoEstaDesabilitado" expand="block" slot="fixed" color="dark" size="medium" style="position: fixed; bottom: 20px; right: 20px;">

@@ -5,4 +5,5 @@ export interface Senha {
   tm_geracao: string;
   tipoSenha:string;
   prioridade: number;
+  tempoMedio: string;
 }
