@@ -1,4 +1,4 @@
-import { Injectable, Component } from '@angular/core';
+import { Injectable, Component, ChangeDetectorRef  } from '@angular/core';
 import { Senha } from './senha.interface';
 import { format } from 'date-fns';
 
@@ -22,6 +22,7 @@ export class SenhasService {
   public senhasOrdenadas: Senha[] = [
 
   ];
+  public ultimasSenhas: Senha[] = [];
 
   constructor() { }
 
